@@ -65,19 +65,22 @@ class CardsController extends Controller
         }
 
         $card = Card::find($request->id);
+        $oldTitle = $card->title;
         $card->title = $request->new_task_name;
+        $newTitle = $card->title;
         $card->listing_id = $request->listing_id;
         $card->save();
 
-        return redirect('/');
+        return redirect('/')->with('flash_message', '『' . $oldTitle . '』が『'. $newTitle . '』' . 'に更新されました');
     }
 
     public function destroy($listing_id, $card_id)
     {
         $card = Card::find($card_id);
+        $title = $card->title;
         $card->delete();
 
 
-        return redirect('/');
+        return redirect('/')->with('flash_message','タスク名：' . $title . 'が正常に削除されました');
     }
 }

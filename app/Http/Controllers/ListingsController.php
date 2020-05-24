@@ -45,7 +45,7 @@ class ListingsController extends Controller
 
         $listings->save();
 
-        return redirect('/');
+        return redirect('/')->with('');
     }
 
     public function edit($listing_id)
@@ -65,17 +65,20 @@ class ListingsController extends Controller
         }
 
         $listing = Listing::find($request->id);
+        $oldListingTitle = $listing->title;
         $listing->title = $request->title_name;
+        $newListingTitle = $listing->title;
         $listing->save();
 
-        return redirect('/');
+        return redirect('/')->with('flash_message', '『' . $oldListingTitle . '』が『' . $newListingTitle . '』' . 'に更新されました');
     }
 
     public function destroy($listing_id)
     {
         $listing = Listing::find($listing_id);
+        $title = $listing->title;
         $listing->delete();
 
-        return redirect('/');
+        return redirect('/')->with('flash_message', 'リスト名：' . $title . 'が削除されました');
     }
 }

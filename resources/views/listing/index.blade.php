@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
+@if(Session::has('flash_message'))
+<div class="alert alert-success">
+{{ session('flash_message') }}
+</div>
+@endif
+
 @foreach($listings as $listing)
 {{$listing->title}}
 <a class="btn btn btn-info" href="{{ url('/listingsedit', $listing->id) }}">編集</a>
