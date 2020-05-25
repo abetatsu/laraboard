@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Listing;
 use Validator;
-
 use Illuminate\Http\Request;
 use Illuminate\Routing\Matching\ValidatorInterface;
 
@@ -16,11 +15,19 @@ class ListingsController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
+    public function index(Request $request)
     {
+        if( $request->has('keyword') )
+        {
+            $listings = Listing::where('title', 'like', '%' . $request->get('keyword') . '%' )->get();
+
+        } else {
+        
         $listings = Listing::where('user_id', Auth::user()->id)
-                ->orderBy('created_at', 'asc')
-                ->get();
+            ->orderBy('created_at', 'asc')
+            ->get();
+
+        }
 
         return view('listing.index',['listings' => $listings]);
     }

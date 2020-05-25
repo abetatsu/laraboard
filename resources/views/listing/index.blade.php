@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
 
+<form action="/" type="get">
+     <input type="text" name="keyword">
+     <button class="btn btn-primary">検索</button>
+</form>
+
 @if(Session::has('flash_message'))
 <div class="alert alert-success">
 {{ session('flash_message') }}
