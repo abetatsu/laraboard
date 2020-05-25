@@ -19,14 +19,13 @@ class ListingsController extends Controller
     {
         if( $request->has('keyword') )
         {
-            $listings = Listing::where('title', 'like', '%' . $request->get('keyword') . '%' )->get();
+        $listings = Listing::where('title', 'like', '%' . $request->get('keyword') . '%' )->get();
 
         } else {
         
         $listings = Listing::where('user_id', Auth::user()->id)
             ->orderBy('created_at', 'asc')
             ->get();
-
         }
 
         return view('listing.index',['listings' => $listings]);

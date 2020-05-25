@@ -3,7 +3,7 @@
 
 <form action="/" type="get">
      <input type="text" name="keyword">
-     <button class="btn btn-primary">検索</button>
+     <button class="btn btn-primary">リストを検索</button>
 </form>
 
 @if(Session::has('flash_message'))
@@ -14,7 +14,7 @@
 
 <div class="row">
 @foreach($listings as $listing)
-<div class="col-sm-3 py-3">
+<div class="col-lg-3 col-md-6 py-3">
 <div class="card">
   <div class="card-header">
   {{$listing->title}}
