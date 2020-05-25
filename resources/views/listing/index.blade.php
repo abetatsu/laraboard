@@ -12,18 +12,23 @@
 </div>
 @endif
 
+<div class="row">
 @foreach($listings as $listing)
-{{$listing->title}}
-<a class="btn btn btn-info" href="{{ url('/listingsedit', $listing->id) }}">編集</a>
-<a class="btn btn-danger" href="{{ url('/listingsdelete', $listing->id) }}">削除</a><br>
-
-
-@foreach($listing->cards as $card)
-<a class="btn btn-dark" href="/listing/{{ $listing->id }}/card/{{ $card->id }}"><p>{{ $card->title }}</p></a><br>
+<div class="col-sm-3 py-3">
+<div class="card">
+  <div class="card-header">
+  {{$listing->title}}
+  <a class="btn btn btn-info" href="{{ url('/listingsedit', $listing->id) }}">編集</a>
+  <a class="btn btn-danger" href="{{ url('/listingsdelete', $listing->id) }}">削除</a>
+  </div>
+  <ul class="list-group list-group-flush">
+     @foreach($listing->cards as $card)
+     <li class="list-group-item"><a class="text-dark" href="/listing/{{ $listing->id }}/card/{{ $card->id }}"><p>{{ $card->title }}</p></a><input type="submit" value="&#xf164;" class="fas"></li>
+     @endforeach
+     <li class="list-group-item"><a class="text-success" href="/listing/{{ $listing->id }}/card/new">タスクを追加</a></li>
+  </ul>
+</div>
+</div>
 @endforeach
-
-<a class="btn btn-success btn" href="/listing/{{ $listing->id }}/card/new">タスクを追加</a><br>
-
-
-@endforeach
+</div>
 @endsection
