@@ -12,4 +12,9 @@ class Listing extends Model
     {
         return $this->hasMany('App\Card');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

@@ -23,7 +23,7 @@ class ListingsController extends Controller
 
         } else {
         
-        $listings = Listing::where('user_id', Auth::user()->id)
+        $listings = Listing::limit(30)
             ->orderBy('created_at', 'asc')
             ->get();
 
@@ -34,6 +34,7 @@ class ListingsController extends Controller
 
     public function new()
     {
+        
         return view('listing.new');
     }
 
