@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\User;
 use App\Listing;
 use Validator;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class ListingsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index']);
     }
     
     public function index(Request $request)
@@ -39,7 +40,7 @@ class ListingsController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), ['title_name' => 'required|max:255' , ]);
+        $validator = Validator::make($request->all(), ['title_name' => 'required|max:255']);
 
         if ($validator->fails()) 
         {
@@ -49,7 +50,6 @@ class ListingsController extends Controller
         $listings = new Listing;
         $listings->title = $request->title_name;
         $listings->user_id = Auth::user()->id;
-
         $listings->save();
 
         return redirect('/');

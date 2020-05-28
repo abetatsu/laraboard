@@ -17,7 +17,8 @@
 <div class="col-lg-3 col-md-6 py-3">
 <div class="card">
   <div class="card-header">
-  {{$listing->title}}
+  投稿者：{{ $listing->user->name }}<br>
+  リスト名：{{ $listing->title }}
   @canany(['update', 'delete'],$listing)
   <a class="btn btn btn-info" href="{{ url('/listingsedit', $listing->id) }}">編集</a>
   <a class="btn btn-danger" href="{{ url('/listingsdelete', $listing->id) }}">削除</a>
