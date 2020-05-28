@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Listing;
+use App\Card;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -42,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Listing');
     }
+
+    // public function cards()
+    // {
+    //     return $this->hasMany('App\Card');
+    // }
 }

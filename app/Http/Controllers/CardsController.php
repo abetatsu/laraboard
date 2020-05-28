@@ -16,9 +16,9 @@ class CardsController extends Controller
         $this->middleware('auth');
     }
 
-    public function new($listing_id)
+    public function new($user_id, $listing_id)
     {
-        return view('card.new', ['listing_id' => $listing_id]);
+        return view('card.new', ['user_id' => $user_id, 'listing_id' => $listing_id]);
     }
 
     public function store(Request $request)
@@ -32,6 +32,7 @@ class CardsController extends Controller
 
         $cards = new Card;
         $cards->title = $request->task_name;
+        $cards->user_id = $request->user_id;
         $cards->listing_id = $request->listing_id;
         $cards->save();
 

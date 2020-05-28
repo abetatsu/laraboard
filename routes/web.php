@@ -27,9 +27,9 @@ Route::post('/listing/edit', 'ListingsController@update');
 
 Route::get('/listingsdelete/{listing_id}', 'ListingsController@destroy');
 
-Route::get('/listing/{listing_id}/card/new', 'CardsController@new');
+Route::get('/listing/{user_id}/{listing_id}/card/new', 'CardsController@new');
 
-Route::post('/listing/{listing_id}/card', 'CardsController@store');
+Route::post('/listing/{user_id}/{listing_id}/card', 'CardsController@store');
 
 Route::get('/listing/{listing_id}/card/{card_id}', 'CardsController@show');
 

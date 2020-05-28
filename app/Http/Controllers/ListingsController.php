@@ -52,7 +52,7 @@ class ListingsController extends Controller
 
         $listings->save();
 
-        return redirect('/')->with('');
+        return redirect('/');
     }
 
     public function edit($listing_id)

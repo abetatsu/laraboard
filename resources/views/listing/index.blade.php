@@ -18,14 +18,16 @@
 <div class="card">
   <div class="card-header">
   {{$listing->title}}
+  @canany(['update', 'delete'],$listing)
   <a class="btn btn btn-info" href="{{ url('/listingsedit', $listing->id) }}">編集</a>
   <a class="btn btn-danger" href="{{ url('/listingsdelete', $listing->id) }}">削除</a>
+  @endcanany
   </div>
   <ul class="list-group list-group-flush">
      @foreach($listing->cards as $card)
      <li class="list-group-item"><a class="text-dark" href="/listing/{{ $listing->id }}/card/{{ $card->id }}"><p>{{ $card->title }}</p></a><input type="submit" value="&#xf164;" class="fas"></li>
      @endforeach
-     <li class="list-group-item"><a class="text-success" href="/listing/{{ $listing->id }}/card/new">タスクを追加</a></li>
+     <li class="list-group-item"><a class="text-success" href="/listing/{{ $listing->user_id }}/{{ $listing->id }}/card/new">タスクを追加</a></li>
   </ul>
 </div>
 </div>
