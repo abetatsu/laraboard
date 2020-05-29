@@ -23,7 +23,7 @@ class CardsController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), ['task_name' => 'required|max:255']);
+        $validator = Validator::make($request->all(), ['task_name' => 'required|max:255','content' => 'required']);
 
         if ($validator->fails())
         {
@@ -34,6 +34,8 @@ class CardsController extends Controller
         $cards->title = $request->task_name;
         $cards->user_id = $request->user_id;
         $cards->listing_id = $request->listing_id;
+        $cards->content = $request->content;
+        $cards->created_at = $request->created_at;
         $cards->save();
 
         return redirect('/');
