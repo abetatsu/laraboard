@@ -8,4 +8,5 @@
      <input type="hidden" name="id" value="{{ old('id', $listing->id) }}">
      <button class="btn btn-info">更新</button>
 </form>
+<a class="btn btn-primary" href="/">TOPに戻る</a>
 @endsection

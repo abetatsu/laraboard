@@ -8,4 +8,5 @@
      <input type="hidden" name="listing_id" value="{{ $listing_id }}">
      <button class="btn btn-primary" type="submit">新規登録</button>
 </form>
+<a class="btn btn-primary" href="/">TOPに戻る</a>
 @endsection
