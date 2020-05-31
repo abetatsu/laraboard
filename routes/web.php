@@ -15,7 +15,7 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'ListingsController@index');
+Route::get('/', 'ListingsController@index')->name('listing.index');
 
 Route::get('/new', 'ListingsController@new');
 

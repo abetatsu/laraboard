@@ -30,14 +30,14 @@
   <div class="col-md-3">
       <form action="{{ route('unfavorites', $listing) }}" method="POST">
           @csrf
-          <input type="submit" value="&#xf164;いいね取り消す" class="fas btn btn-danger">
+          <input type="submit" value="&#xf164;" class="fas btn btn-success">
       </form>
   </div>
   @else
   <div class="col-md-3">
       <form action="{{ route('favorites', $listing) }}" method="POST">
           @csrf
-          <input type="submit" value="&#xf164;いいね" class="fas btn btn-success">
+          <input type="submit" value="&#xf164;" class="fas btn btn-primary">
       </form>
   </div>
   @endif

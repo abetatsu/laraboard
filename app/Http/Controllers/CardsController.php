@@ -60,7 +60,7 @@ class CardsController extends Controller
 
     public function update(Request $request)
     {
-        $validator = Validator::make($request->all(), ['new_task_name' => 'required|max:255']);
+        $validator = Validator::make($request->all(), ['new_task_name' => 'required|max:255', 'content' => 'required']);
 
         if ($validator->fails())
         {
@@ -72,6 +72,7 @@ class CardsController extends Controller
         $card->title = $request->new_task_name;
         $newTitle = $card->title;
         $card->listing_id = $request->listing_id;
+        $card->content = $request->content;
         $card->save();
 
         return redirect('/')->with('flash_message', '『' . $oldTitle . '』が『'. $newTitle . '』' . 'に更新されました');
