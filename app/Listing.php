@@ -13,8 +13,8 @@ class Listing extends Model
         return $this->hasMany('App\Card');
     }
 
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany('App\User')->withTimestamps();
+        return $this->belongsTo('App\User');
     }
 }

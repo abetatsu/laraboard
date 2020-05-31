@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Listing;
+use App\Card;
 use Auth;
 use Illuminate\Http\Request;
 
-class FavoriteController extends Controller
+class CardFavoriteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,13 +34,12 @@ class FavoriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Listing $listing)
+    public function store(Card $card)
     {
-        $listing->users()->attach(Auth::id());
+        $card->users()->attach(Auth::id());
 
         return redirect()->route('listing.index');
     }
-
 
     /**
      * Display the specified resource.
@@ -82,9 +81,10 @@ class FavoriteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Listing $listing)
+    public function destroy(Card $card)
     {
-        $listing->users()->detach(Auth::id());
+        $card->users()->detach(Auth::id());
+
         return redirect()->route('listing.index');
     }
 }

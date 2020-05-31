@@ -27,6 +27,7 @@ class ListingsController extends Controller
         $listings = Listing::limit(30)
             ->orderBy('created_at', 'asc')
             ->get();
+
         }
 
         return view('listing.index',['listings' => $listings]);

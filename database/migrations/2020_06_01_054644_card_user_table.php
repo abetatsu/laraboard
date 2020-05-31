@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ListingUserTable extends Migration
+class CardUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class ListingUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('listing_user', function (Blueprint $table) {
+        Schema::create('card_user', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('listing_id');
+            $table->unsignedBigInteger('card_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('listing_id')->references('id')->on('listings')->onDelete('cascade');
+            $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade');
 
-            $table->unique(['user_id', 'listing_id']);
-    });
-}
+            $table->unique(['user_id', 'card_id']);
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -33,6 +33,6 @@ class ListingUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('listing_user');
+        Schema::dropIfExists('card_user');
     }
 }

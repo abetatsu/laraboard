@@ -44,12 +44,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Listing');
     }
 
-    // public function cards()
-    // {
-    //     return $this->hasMany('App\Card');
-    // }
-    public function favorites()
+    public function cards()
     {
-        return $this->belongsToMany('App\Listing')->withTimestamps();
+        return $this->belongsToMany('App\Card')->withTimestamps();
     }
 }

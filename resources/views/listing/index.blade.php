@@ -24,30 +24,32 @@
   <a class="btn btn-danger" href="{{ url('/listingsdelete', $listing->id) }}">削除</a>
   @endcanany
   <br>
-  
+  投稿者：{{ $listing->user->name }}
+  <br>
   投稿日時：{{ $listing->created_at->format('Y.m.d') }}
-  @if($listing->users()->where('user_id', Auth::id())->exists())
-  <div class="col-md-3">
-      <form action="{{ route('unfavorites', $listing) }}" method="POST">
-          @csrf
-          <input type="submit" value="&#xf164;" class="fas btn btn-success">
-      </form>
-  </div>
-  @else
-  <div class="col-md-3">
-      <form action="{{ route('favorites', $listing) }}" method="POST">
-          @csrf
-          <input type="submit" value="&#xf164;" class="fas btn btn-primary">
-      </form>
-  </div>
-  @endif
-  <div class="row justify-content-center">
-    <p>いいね数：{{ $listing->users()->count() }}</p>
-</div>
   </div>
   <ul class="list-group list-group-flush">
      @foreach($listing->cards as $card)
-     <li class="list-group-item"><a class="text-dark" href="/listing/{{ $listing->id }}/card/{{ $card->id }}"><p class="h4">{{ $card->title }}</p></a><input type="submit" value="&#xf164;" class="fas"></li>
+     <li class="list-group-item"><a class="text-dark" href="/listing/{{ $listing->id }}/card/{{ $card->id }}"><p class="h4">{{ $card->title }}</p></a>
+     @if($card->users()->where('user_id', Auth::id())->exists())
+    <div class="col-md-3">
+      <form action="{{ route('cardUnfavorites', $card) }}" method="POST">
+          @csrf
+          <input type="submit" value="&#xf164;" class="fas btn btn-success">
+      </form>
+    </div>
+    @else
+    <div class="col-md-3">
+      <form action="{{ route('cardFavorites', $card) }}" method="POST">
+          @csrf
+          <input type="submit" value="&#xf164;" class="fas btn btn-primary">
+      </form>
+    </div>
+    @endif
+    <div class="row justify-content-center">
+      <p>いいね数：{{ $card->users()->count() }}</p>
+    </div>
+    </li>
      @endforeach
      @canany(['update', 'delete'],$listing)
      <li class="list-group-item"><a class="text-success" href="/listing/{{ $listing->user_id }}/{{ $listing->id }}/card/new">タスクを追加</a></li>

@@ -39,9 +39,9 @@ Route::post('/card/edit', 'CardsController@update');
 
 Route::get('/listing/{listing_id}/card/{card_id}/delete', 'CardsController@destroy');
 
-Route::post('listing/{listing}/favorites', 'FavoriteController@store')->name('favorites');
+Route::post('card/{card}/favorites', 'CardFavoriteController@store')->name('cardFavorites');
 
-Route::post('listing/{listing}/unfavorites', 'FavoriteController@destroy')->name('unfavorites');
+Route::post('card/{card}/unfavorites', 'CardFavoriteController@destroy')->name('cardUnfavorites');
 
 Auth::routes();
 
