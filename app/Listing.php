@@ -12,4 +12,9 @@ class Listing extends Model
     {
         return $this->hasMany('App\Card');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User')->withTimestamps();
+    }
 }
