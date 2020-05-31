@@ -24,8 +24,26 @@
   <a class="btn btn-danger" href="{{ url('/listingsdelete', $listing->id) }}">削除</a>
   @endcanany
   <br>
-  投稿者：{{ $listing->user->name }}<br>
+  
   投稿日時：{{ $listing->created_at->format('Y.m.d') }}
+  @if($listing->users()->where('user_id', Auth::id())->exists())
+  <div class="col-md-3">
+      <form action="{{ route('unfavorites', $listing) }}" method="POST">
+          @csrf
+          <input type="submit" value="&#xf164;いいね取り消す" class="fas btn btn-danger">
+      </form>
+  </div>
+  @else
+  <div class="col-md-3">
+      <form action="{{ route('favorites', $listing) }}" method="POST">
+          @csrf
+          <input type="submit" value="&#xf164;いいね" class="fas btn btn-success">
+      </form>
+  </div>
+  @endif
+  <div class="row justify-content-center">
+    <p>いいね数：{{ $listing->users()->count() }}</p>
+</div>
   </div>
   <ul class="list-group list-group-flush">
      @foreach($listing->cards as $card)

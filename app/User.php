@@ -39,7 +39,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-<<<<<<< HEAD
     public function listings()
     {
         return $this->hasMany('App\Listing');
@@ -49,10 +48,8 @@ class User extends Authenticatable
     // {
     //     return $this->hasMany('App\Card');
     // }
-=======
     public function favorites()
     {
         return $this->belongsToMany('App\Listing')->withTimestamps();
     }
->>>>>>> like
 }

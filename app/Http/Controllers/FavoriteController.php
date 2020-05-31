@@ -37,7 +37,7 @@ class FavoriteController extends Controller
     public function store(Listing $listing)
     {
         $listing->users()->attach(Auth::id());
-        return redirect()->route('listing.index');
+        return view('listing.index');
     }
 
 
@@ -84,6 +84,6 @@ class FavoriteController extends Controller
     public function destroy(Listing $listing)
     {
         $listing->users()->attach(Auth::id());
-        return redirect()->route('listing.index');
+        return view('listing.index');
     }
 }
