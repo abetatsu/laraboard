@@ -27,6 +27,10 @@
   投稿者：{{ $listing->user->name }}
   <br>
   投稿日時：{{ $listing->created_at->format('Y.m.d') }}
+  <br>
+  @if(isset($listing->public_id))
+  <img src="{{ $listing->image_path }}" alt="リスト画像">
+  @endif
   </div>
   <ul class="list-group list-group-flush">
      @foreach($listing->cards as $card)
