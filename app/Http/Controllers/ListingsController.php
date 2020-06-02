@@ -18,9 +18,11 @@ class ListingsController extends Controller
     
     public function index(Request $request)
     {
+        $keyword = $request->get('keyword');
+
         if( $request->has('keyword') )
         {
-        $listings = Listing::where('title', 'like', '%' . $request->get('keyword') . '%' )->get();
+        $listings = Listing::where('title', 'like', '%' . $keyword . '%' )->get();
 
         } else {
         

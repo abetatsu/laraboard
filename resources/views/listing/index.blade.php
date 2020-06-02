@@ -3,7 +3,7 @@
 
 <form action="/" type="get">
      <input type="text" name="keyword">
-     <button class="btn btn-primary">リストを検索</button>
+     <button class="btn btn-primary">リスト名を検索</button>
 </form>
 
 
