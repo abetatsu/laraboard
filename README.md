@@ -1,3 +1,12 @@
+<p>検索機能</p>
+<p>１対１リレーション</p>
+<p>１対多リレーション</p>
+<p>認可</p>
+<p>認証</p>
+<p>いいね機能</p>
+<p>投稿機能</p>
+<p>編集削除機能</p>
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
