@@ -46,3 +46,7 @@ Route::post('card/{card}/unfavorites', 'CardFavoriteController@destroy')->name('
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('login/twitter', 'Auth\LoginController@redirectToProvider')->name('login.twitter');
+
+Route::get('login/twitter/callback', 'Auth\LoginController@handleProviderCallback');
