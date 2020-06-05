@@ -25,12 +25,16 @@ class ListingsController extends Controller
         {
         $listings = Listing::where('title', 'like', '%' . $keyword . '%' )->get();
 
-        } else {
+        } elseif($request->has('userName')) {
         
+        $user = User::firstWhere('name', $request->get('userName'));
+        $listings = Listing::where('user_id', $user->id)->get();
+        
+        } else {
+
         $listings = Listing::limit(30)
             ->orderBy('created_at', 'asc')
             ->get();
-
         }
 
         return view('listing.index',['listings' => $listings]);

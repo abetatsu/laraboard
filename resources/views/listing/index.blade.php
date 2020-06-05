@@ -3,7 +3,11 @@
 
 <form action="/" type="get">
      <input type="text" name="keyword">
-     <button class="btn btn-primary">リスト名を検索</button>
+     <button class="btn btn-primary">リスト名で検索</button>
+</form>
+<form action="/" type="get" class="my-2">
+     <input type="text" name="userName">
+     <button class="btn btn-primary">投稿者名で検索</button>
 </form>
 
 
