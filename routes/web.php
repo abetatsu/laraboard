@@ -19,6 +19,8 @@ Route::get('/', 'ListingsController@index')->name('listing.index');
 
 Route::get('/new', 'ListingsController@new');
 
+Route::get('/user', 'UsersController@index');
+
 Route::post('/listings', 'ListingsController@store');
 
 Route::get('/listingsedit/{listing_id}', 'ListingsController@edit');
